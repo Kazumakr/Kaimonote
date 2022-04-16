@@ -1,5 +1,13 @@
 import React, { Dispatch, SetStateAction } from "react";
-import { Container, Left, Center, Right, Add } from "./HeaderStyle";
+import {
+	Container,
+	Left,
+	Center,
+	Right,
+	Add,
+	Cancel,
+	Done,
+} from "./HeaderStyle";
 interface Props {
 	show: boolean;
 	setShow: Dispatch<SetStateAction<boolean>>;
@@ -47,12 +55,12 @@ const Header = ({
 	return (
 		<Container>
 			<Left>
-				{(show || edit) && <span onClick={handleCancel}>Cancel</span>}
+				{(show || edit) && <Cancel onClick={handleCancel}>Cancel</Cancel>}
 			</Left>
 			<Center>KAIMONOTE</Center>
 			<Right>
 				{show || edit ? (
-					<span onClick={handleClick}>Done</span>
+					<Done onClick={handleClick}>Done</Done>
 				) : (
 					<Add onClick={() => setShow(true)} />
 				)}

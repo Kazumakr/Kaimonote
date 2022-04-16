@@ -1,6 +1,6 @@
 # KAIMONOTE
 
-Project Link: []
+Project Link: [https://cheery-horse-4128f4.netlify.app/]
 
 ## Table of Contents
 

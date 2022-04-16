@@ -16,8 +16,6 @@ export const Container = styled.div`
 `;
 export const Left = styled.div`
 	flex: 1;
-	font-size: 18px;
-	cursor: pointer;
 `;
 export const Center = styled.div`
 	flex: 2;
@@ -28,11 +26,25 @@ export const Center = styled.div`
 `;
 export const Right = styled.div`
 	flex: 1;
-	font-size: 18px;
 `;
 
 export const Add = styled(FaPlusCircle)`
 	width: 25px;
 	height: 25px;
 	cursor: pointer;
+`;
+
+export const Cancel = styled.span`
+	font-size: 18px;
+	&:hover {
+		cursor: pointer;
+		text-decoration: underline;
+	}
+`;
+export const Done = styled.span`
+	font-size: 18px;
+	&:hover {
+		cursor: pointer;
+		text-decoration: underline;
+	}
 `;
