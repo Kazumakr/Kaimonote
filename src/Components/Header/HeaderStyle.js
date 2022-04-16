@@ -48,3 +48,10 @@ export const Done = styled.span`
 		text-decoration: underline;
 	}
 `;
+export const Reset = styled.span`
+	font-size: 18px;
+	&:hover {
+		cursor: pointer;
+		text-decoration: underline;
+	}
+`;

@@ -47,6 +47,11 @@ const App: FC = () => {
 		setQuantity("");
 	};
 
+	const deleteAllItems = (): void => {
+		localStorage.removeItem("itemList");
+		setItemList([]);
+	};
+
 	useEffect(() => {
 		localStorage.setItem("itemList", JSON.stringify(itemList));
 	}, [itemList]);
@@ -63,15 +68,9 @@ const App: FC = () => {
 				setQuantity={setQuantity}
 				currentIndex={currentIndex}
 				updateItem={updateItem}
+				itemList={itemList}
+				deleteAllItems={deleteAllItems}
 			/>
-			{show && (
-				<AddItem
-					itemName={itemName}
-					setItemName={setItemName}
-					quantity={quantity}
-					setQuantity={setQuantity}
-				/>
-			)}
 			{itemList.map((item: IItem, index: number) => (
 				<ItemList
 					key={index}
@@ -89,6 +88,14 @@ const App: FC = () => {
 					setCurrentIndex={setCurrentIndex}
 				/>
 			))}
+			{show && (
+				<AddItem
+					itemName={itemName}
+					setItemName={setItemName}
+					quantity={quantity}
+					setQuantity={setQuantity}
+				/>
+			)}
 		</Fragment>
 	);
 };

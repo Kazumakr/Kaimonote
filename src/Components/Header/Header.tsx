@@ -7,7 +7,10 @@ import {
 	Add,
 	Cancel,
 	Done,
+	Reset,
 } from "./HeaderStyle";
+import { IItem } from "../../Interfaces";
+
 interface Props {
 	show: boolean;
 	setShow: Dispatch<SetStateAction<boolean>>;
@@ -18,6 +21,8 @@ interface Props {
 	setQuantity: Dispatch<SetStateAction<string>>;
 	updateItem(index: number): void;
 	currentIndex: number;
+	itemList: IItem[];
+	deleteAllItems(): void;
 }
 
 const Header = ({
@@ -30,6 +35,8 @@ const Header = ({
 	setQuantity,
 	currentIndex,
 	updateItem,
+	itemList,
+	deleteAllItems,
 }: Props) => {
 	const handleClick = () => {
 		if (edit) {
@@ -55,7 +62,11 @@ const Header = ({
 	return (
 		<Container>
 			<Left>
-				{(show || edit) && <Cancel onClick={handleCancel}>Cancel</Cancel>}
+				{show || edit ? (
+					<Cancel onClick={handleCancel}>Cancel</Cancel>
+				) : (
+					itemList && <Reset onClick={deleteAllItems}>Reset</Reset>
+				)}
 			</Left>
 			<Center>KAIMONOTE</Center>
 			<Right>
