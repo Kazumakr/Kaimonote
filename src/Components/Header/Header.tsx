@@ -1,5 +1,4 @@
 import React, { Dispatch, SetStateAction } from "react";
-import AddItem from "../AddItem/AddItem";
 import { Container, Left, Center, Right, Add } from "./HeaderStyle";
 interface Props {
 	show: boolean;
