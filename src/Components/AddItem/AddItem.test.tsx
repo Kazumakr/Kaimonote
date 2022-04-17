@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { render, screen } from "@testing-library/react";
+import React from "react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import AddItem from "./AddItem";
 
 test("deleteIcon should be rendered", () => {
@@ -39,4 +39,38 @@ test("quantityInput should be rendered", () => {
 	);
 	const quantityInputEl = screen.getByTestId("quantityInput");
 	expect(quantityInputEl).toBeInTheDocument();
+});
+
+test("setItemName should be called when input value changed", () => {
+	const setItemName = jest.fn();
+	render(
+		<AddItem
+			itemName={""}
+			setItemName={setItemName}
+			quantity={""}
+			setQuantity={jest.fn()}
+		/>
+	);
+
+	const nameInputEl = screen.getByTestId("nameInput");
+	const testValue = "test";
+	fireEvent.change(nameInputEl, { target: { value: testValue } });
+	expect(setItemName).toHaveBeenCalledWith(testValue);
+});
+
+test("setQuantity should be called when input value changed", () => {
+	const setQuantity = jest.fn();
+	render(
+		<AddItem
+			itemName={""}
+			setItemName={jest.fn()}
+			quantity={""}
+			setQuantity={setQuantity}
+		/>
+	);
+
+	const quantityInputEl = screen.getByTestId("quantityInput");
+	const testValue = "test";
+	fireEvent.change(quantityInputEl, { target: { value: testValue } });
+	expect(setQuantity).toHaveBeenCalledWith(testValue);
 });

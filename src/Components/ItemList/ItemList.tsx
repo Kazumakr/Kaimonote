@@ -1,4 +1,4 @@
-import React, { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
+import React, { ChangeEvent, Dispatch, SetStateAction } from "react";
 import {
 	Container,
 	CheckBoxContainer,
@@ -20,13 +20,11 @@ interface Props {
 	edit: boolean;
 	itemName: string;
 	quantity: string;
-
 	currentIndex: number;
 	deleteItem(index: number): void;
 	setEdit: Dispatch<SetStateAction<boolean>>;
 	setItemName: Dispatch<SetStateAction<string>>;
 	setQuantity: Dispatch<SetStateAction<string>>;
-
 	setCurrentIndex: Dispatch<SetStateAction<number>>;
 	toggleChecked(index: number): void;
 }
@@ -37,13 +35,11 @@ const ItemList = ({
 	edit,
 	itemName,
 	quantity,
-
 	currentIndex,
 	deleteItem,
 	setEdit,
 	setItemName,
 	setQuantity,
-
 	setCurrentIndex,
 	toggleChecked,
 }: Props) => {
@@ -55,9 +51,10 @@ const ItemList = ({
 	};
 
 	return (
-		<Container index={index}>
+		<Container index={index} data-testid={`item-${index}`}>
 			<CheckBoxContainer>
 				<CheckBox
+					data-testid={`checkBox-${index}`}
 					checked={item.checked}
 					type="checkbox"
 					onChange={() => toggleChecked(index)}
@@ -67,6 +64,7 @@ const ItemList = ({
 			{edit && index === currentIndex ? (
 				<>
 					<NameInput
+						data-testid={`nameInput-${index}`}
 						type="text"
 						value={itemName}
 						onChange={(event: ChangeEvent<HTMLInputElement>) =>
@@ -75,6 +73,7 @@ const ItemList = ({
 					/>
 
 					<QuantityInput
+						data-testid={`quantityInput-${index}`}
 						type="text"
 						value={quantity}
 						onChange={(event: ChangeEvent<HTMLInputElement>) =>
@@ -85,6 +84,7 @@ const ItemList = ({
 			) : (
 				<>
 					<Name
+						data-testid={`name-${index}`}
 						show={show}
 						checked={item.checked}
 						onClick={() => activeEdit(index)}
@@ -92,6 +92,7 @@ const ItemList = ({
 						{item.itemName}
 					</Name>
 					<Quantity
+						data-testid={`quantity-${index}`}
 						show={show}
 						checked={item.checked}
 						onClick={() => activeEdit(index)}
@@ -101,7 +102,7 @@ const ItemList = ({
 				</>
 			)}
 			<DeleteContainer>
-				<Delete onClick={() => deleteItem(index)} />
+				<Delete data-testid="deleteIcon" onClick={() => deleteItem(index)} />
 			</DeleteContainer>
 		</Container>
 	);
