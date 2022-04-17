@@ -1,11 +1,11 @@
-import React, { Fragment, FC, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Header from "./Components/Header/Header";
 import AddItem from "./Components/AddItem/AddItem";
 import ItemList from "./Components/ItemList/ItemList";
 import { IItem } from "./Interfaces";
 import GlobalStyle from "./globalStyle";
 
-const App: FC = () => {
+const App = () => {
 	const [show, setShow] = useState<boolean>(false);
 	const [edit, setEdit] = useState<boolean>(false);
 	const [itemName, setItemName] = useState<string>("");
@@ -22,7 +22,11 @@ const App: FC = () => {
 
 	const addItem = (): void => {
 		if (itemName !== "") {
-			const newItem = { itemName: itemName, quantity: quantity };
+			const newItem = {
+				itemName: itemName,
+				quantity: quantity,
+				checked: false,
+			};
 			setItemList([...itemList, newItem]);
 		}
 		setItemName("");
@@ -32,16 +36,29 @@ const App: FC = () => {
 	const deleteItem = (index: number): void => {
 		setItemList((itemList) => itemList.filter((item, i) => i !== index));
 	};
-
-	const updateItem = (index: number): void => {
-		console.log("itemName&quantity", itemName, quantity);
+	const toggleChecked = (index: number): void => {
 		const newItems = itemList.map((item, i) => {
 			if (i === index) {
-				return { itemName, quantity };
+				if (item.checked === false) {
+					return { ...item, checked: true };
+				} else {
+					return { ...item, checked: false };
+				}
 			}
 			return item;
 		});
-		console.log("newItems", newItems);
+
+		setItemList(newItems);
+	};
+
+	const updateItem = (index: number): void => {
+		const newItems = itemList.map((item, i) => {
+			if (i === index) {
+				return { itemName, quantity, checked: false };
+			}
+			return item;
+		});
+
 		setItemList(newItems);
 		setItemName("");
 		setQuantity("");
@@ -86,6 +103,7 @@ const App: FC = () => {
 					setItemName={setItemName}
 					setQuantity={setQuantity}
 					setCurrentIndex={setCurrentIndex}
+					toggleChecked={toggleChecked}
 				/>
 			))}
 			{show && (

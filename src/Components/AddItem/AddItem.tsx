@@ -25,6 +25,7 @@ const AddItem = ({ itemName, setItemName, quantity, setQuantity }: Props) => {
 				<Checkmark></Checkmark>
 			</CheckBoxContainer>
 			<Name
+				data-testid="nameInput"
 				type="text"
 				value={itemName}
 				onChange={(event: ChangeEvent<HTMLInputElement>) =>
@@ -32,6 +33,7 @@ const AddItem = ({ itemName, setItemName, quantity, setQuantity }: Props) => {
 				}
 			/>
 			<Quantity
+				data-testid="quantityInput"
 				type="text"
 				value={quantity}
 				onChange={(event: ChangeEvent<HTMLInputElement>) =>
@@ -39,7 +41,7 @@ const AddItem = ({ itemName, setItemName, quantity, setQuantity }: Props) => {
 				}
 			/>
 			<DeleteContainer>
-				<Delete />
+				<Delete data-testid="deleteIcon" />
 			</DeleteContainer>
 		</Container>
 	);

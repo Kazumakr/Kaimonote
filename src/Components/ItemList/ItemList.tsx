@@ -20,12 +20,15 @@ interface Props {
 	edit: boolean;
 	itemName: string;
 	quantity: string;
+
 	currentIndex: number;
 	deleteItem(index: number): void;
 	setEdit: Dispatch<SetStateAction<boolean>>;
 	setItemName: Dispatch<SetStateAction<string>>;
 	setQuantity: Dispatch<SetStateAction<string>>;
+
 	setCurrentIndex: Dispatch<SetStateAction<number>>;
+	toggleChecked(index: number): void;
 }
 const ItemList = ({
 	item,
@@ -34,29 +37,31 @@ const ItemList = ({
 	edit,
 	itemName,
 	quantity,
+
 	currentIndex,
 	deleteItem,
 	setEdit,
 	setItemName,
 	setQuantity,
-	setCurrentIndex,
-}: Props) => {
-	const [checked, setChecked] = useState<boolean>(false);
 
+	setCurrentIndex,
+	toggleChecked,
+}: Props) => {
 	const activeEdit = (index: number) => {
 		setEdit(true);
 		setCurrentIndex(index);
 		setItemName(item.itemName);
 		setQuantity(item.quantity);
 	};
-	const checkHandler = () => {
-		setChecked(!checked);
-	};
 
 	return (
 		<Container index={index}>
 			<CheckBoxContainer>
-				<CheckBox type="checkbox" onChange={() => checkHandler()} />
+				<CheckBox
+					checked={item.checked}
+					type="checkbox"
+					onChange={() => toggleChecked(index)}
+				/>
 				<Checkmark></Checkmark>
 			</CheckBoxContainer>
 			{edit && index === currentIndex ? (
@@ -79,12 +84,16 @@ const ItemList = ({
 				</>
 			) : (
 				<>
-					<Name show={show} checked={checked} onClick={() => activeEdit(index)}>
+					<Name
+						show={show}
+						checked={item.checked}
+						onClick={() => activeEdit(index)}
+					>
 						{item.itemName}
 					</Name>
 					<Quantity
 						show={show}
-						checked={checked}
+						checked={item.checked}
 						onClick={() => activeEdit(index)}
 					>
 						{item.quantity}

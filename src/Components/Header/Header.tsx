@@ -63,17 +63,25 @@ const Header = ({
 		<Container>
 			<Left>
 				{show || edit ? (
-					<Cancel onClick={handleCancel}>Cancel</Cancel>
+					<Cancel data-testid="cancelText" onClick={handleCancel}>
+						Cancel
+					</Cancel>
 				) : (
-					itemList && <Reset onClick={deleteAllItems}>Reset</Reset>
+					itemList.length > 0 && (
+						<Reset data-testid="resetText" onClick={deleteAllItems}>
+							Reset
+						</Reset>
+					)
 				)}
 			</Left>
 			<Center>KAIMONOTE</Center>
 			<Right>
 				{show || edit ? (
-					<Done onClick={handleClick}>Done</Done>
+					<Done data-testid="doneText" onClick={handleClick}>
+						Done
+					</Done>
 				) : (
-					<Add onClick={() => setShow(true)} />
+					<Add data-testid="addText" onClick={() => setShow(true)} />
 				)}
 			</Right>
 		</Container>
