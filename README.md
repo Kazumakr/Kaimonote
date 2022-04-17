@@ -25,7 +25,7 @@ I thought that creating a simple CRUD app like this was a good opportunity to tr
 
 ### What problem this app solved
 
-Avoid missing anything to buy.
+Prevent missing anything to buy.
 You don't need to use paper or note app.
 
 ### what I learned through this project
