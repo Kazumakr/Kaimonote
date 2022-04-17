@@ -2,6 +2,8 @@
 
 KAIMONOTE is a simple web application to save shopping list in order not to miss anything to buy.
 
+![KAIMONOTE_screen](https://user-images.githubusercontent.com/67501734/163690681-2a8602f2-8cd9-4525-8aa6-15a2644284d1.png)
+
 Project Link: [https://cheery-horse-4128f4.netlify.app/]
 
 ## Table of Contents
@@ -64,13 +66,22 @@ For use on mobile devices, the item list was designed to be in edit mode by simp
 
 ### Add new item
 
+![additem mov](https://user-images.githubusercontent.com/67501734/163690999-33a08644-eba8-462e-a08a-26f61faf00db.gif)
+
 ### Mark item as you bought / not
+
+![markitem mov](https://user-images.githubusercontent.com/67501734/163691029-9cf93642-3c19-4c98-987b-acddcd8ae443.gif)
 
 ### Edit item
 
+![edititem mov](https://user-images.githubusercontent.com/67501734/163691024-e6eb79b1-7e2a-4641-bbcc-bd12f059b05f.gif)
+
 ### Delete item
 
+![deleteitem mov](https://user-images.githubusercontent.com/67501734/163691023-6eb3e363-a0b5-449b-83a1-e7f6ae9343ad.gif)
+
 ### Delete all items
+![deleteall mov](https://user-images.githubusercontent.com/67501734/163691000-1a27c21e-9b3d-4a9d-9e61-a957a470c9a5.gif)
 
 ## License
 
